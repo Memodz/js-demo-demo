@@ -1,0 +1,23 @@
+name: Javascript CI
+on: [push, pull_request]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v7.0.0
+              with: 
+                repository: ${{ github.repository }}
+
+            - name: Setup Node.js environment
+              uses: actions/setup-node@v6.4.0
+
+            - name: Build project
+              run: |
+                npm ci #clean install
+                npm run build --if-present #ถ้ามีrun build ให้ทำการ build ใน package.json
+                
+            - name: Run tests
+              run: |
+                npm test #run test
