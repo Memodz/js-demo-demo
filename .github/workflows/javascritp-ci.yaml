@@ -15,9 +15,9 @@ jobs:
 
             - name: Build project
               run: |
-                npm ci #clean install
-                npm run build --if-present #ถ้ามีrun build ให้ทำการ build ใน package.json
-                
+                npm ci
+                npm run build --if-present 
+
             - name: Run tests
               run: |
-                npm test #run test
+                npm test 
